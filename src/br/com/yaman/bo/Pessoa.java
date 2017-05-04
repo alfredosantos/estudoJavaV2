@@ -6,12 +6,14 @@ import java.util.List;
 import java.util.Optional;
 
 import br.com.yaman.common.Cpf;
+import br.com.yaman.common.Email;
 
 public class Pessoa implements Serializable, Comparable<Pessoa>{
 	String nome;
 	int idade;
 	Endereco endereco;
 	Cpf cpf;
+	Email email;
 
 	List<Conta> listContaPessoa = new ArrayList<Conta>();
 
@@ -53,6 +55,14 @@ public class Pessoa implements Serializable, Comparable<Pessoa>{
 
 	public void setListContaPessoa(List<Conta> listContaPessoa) {
 		this.listContaPessoa = listContaPessoa;
+	}
+
+	public Email getEmail() {
+		return email;
+	}
+
+	public void setEmail(Email email) {
+		this.email = email;
 	}
 
 	public Boolean incluirConta(Conta conta){
@@ -109,7 +119,7 @@ public class Pessoa implements Serializable, Comparable<Pessoa>{
 		for (Conta conta : listContaPessoa) {
 			contas += conta;
 		}
-		return "Nome: " + this.nome + "\n Idade: " + this.idade + "\n Endereço: " + this.endereco + "\n CPF: " + this.cpf + "\n Contas " + contas;
+		return "Nome: " + this.nome + "\n Idade: " + this.idade + "\n Endereço: " + this.endereco + "\n CPF: " + this.cpf + "\n Contas " + contas + "\n Email "  + this.email;
 
 	}
 

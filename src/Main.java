@@ -1,12 +1,17 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import br.com.yaman.bo.Agencia;
 import br.com.yaman.bo.Conta;
 import br.com.yaman.bo.ContaCorrente;
 import br.com.yaman.bo.ContaPoupanca;
 import br.com.yaman.bo.Endereco;
 import br.com.yaman.bo.Pessoa;
 import br.com.yaman.common.Cpf;
+import br.com.yaman.common.Email;
 
 public class Main {
 
@@ -16,9 +21,32 @@ public class Main {
 		pessoa.setIdade(18);
 		inclusaoCpf(pessoa);
 		inclusaoEndereco(pessoa);
-		inclusaoDeContas(pessoa);
+		//inclusaoDeContas(pessoa);
 		//trabalharComConta(pessoa);
+		inclusaoDeAgencia(pessoa);
+		try {
+			pessoa.setEmail(Email.of("alfredgsantos@gmail.com"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+		String email = "alfredo@gmail.com";
+		String[] palavras	=	email.split("@");
+		System.out.println(Arrays.toString(palavras));
+		System.out.println((palavras[0]));
+		System.out.println((palavras[1]));
+		
+		for (String validaEmail : palavras) {
+			
+			System.out.println("=>" + validaEmail);
+		}
+		for (int i = 0; i < email.length(); i++) {
+			int c = (int) email.charAt(i);
+			char emailV2 = email.charAt(i);
 
+		}
+		
 		System.out.println(pessoa);
 		
 	}
@@ -89,6 +117,41 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+    	
+    }
+    
+    public static void inclusaoDeAgencia(Pessoa pessoa){
+    	
+    	ContaCorrente contaCorrente = new ContaCorrente();
+		contaCorrente.setAgencia(123);
+		contaCorrente.setNumero(1);
+		
+		ContaCorrente contaCorrente2 = new ContaCorrente();
+		contaCorrente2.setAgencia(123);
+		contaCorrente2.setNumero(2);
+		
+		ContaPoupanca contaPoupanca = new ContaPoupanca();
+		contaPoupanca.setAgencia(123);
+		contaPoupanca.setNumero(3);
+		
+		ContaPoupanca contaPoupanca2 = new ContaPoupanca();
+		contaPoupanca2.setAgencia(123);
+		contaPoupanca2.setNumero(4);
+		
+		ContaPoupanca contaPoupanca3 = new ContaPoupanca();
+		contaPoupanca3.setAgencia(123);
+		contaPoupanca3.setNumero(5);
+		
+		HashMap<Pessoa, List<Conta>> mapaPessoaConta = new HashMap<>();
+		List<Conta> listContas = new ArrayList<Conta>();
+		listContas.add(contaCorrente);
+		listContas.add(contaCorrente2);
+		listContas.add(contaPoupanca);
+		listContas.add(contaPoupanca2);
+		listContas.add(contaPoupanca3);
+		mapaPessoaConta.put(pessoa, listContas);
+		
+ 
     	
     }
     
