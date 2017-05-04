@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -23,29 +24,8 @@ public class Main {
 		inclusaoEndereco(pessoa);
 		//inclusaoDeContas(pessoa);
 		//trabalharComConta(pessoa);
+		inclusaoEmail(pessoa);
 		inclusaoDeAgencia(pessoa);
-		try {
-			pessoa.setEmail(Email.of("alfredgsantos@gmail.com"));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-				
-		String email = "alfredo@gmail.com";
-		String[] palavras	=	email.split("@");
-		System.out.println(Arrays.toString(palavras));
-		System.out.println((palavras[0]));
-		System.out.println((palavras[1]));
-		
-		for (String validaEmail : palavras) {
-			
-			System.out.println("=>" + validaEmail);
-		}
-		for (int i = 0; i < email.length(); i++) {
-			int c = (int) email.charAt(i);
-			char emailV2 = email.charAt(i);
-
-		}
 		
 		System.out.println(pessoa);
 		
@@ -120,6 +100,16 @@ public class Main {
     	
     }
     
+    public static void inclusaoEmail(Pessoa pessoa){
+		try {
+			pessoa.setEmail(Email.of("alfredgsantos@gmail.com"));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    }
+    
     public static void inclusaoDeAgencia(Pessoa pessoa){
     	
     	ContaCorrente contaCorrente = new ContaCorrente();
@@ -142,17 +132,19 @@ public class Main {
 		contaPoupanca3.setAgencia(123);
 		contaPoupanca3.setNumero(5);
 		
-		HashMap<Pessoa, List<Conta>> mapaPessoaConta = new HashMap<>();
+		HashMap<Pessoa, List<Conta>> mapaAgenciaPessoaConta = new HashMap<>();
 		List<Conta> listContas = new ArrayList<Conta>();
 		listContas.add(contaCorrente);
 		listContas.add(contaCorrente2);
 		listContas.add(contaPoupanca);
 		listContas.add(contaPoupanca2);
 		listContas.add(contaPoupanca3);
-		mapaPessoaConta.put(pessoa, listContas);
+		mapaAgenciaPessoaConta.put(pessoa, listContas);
 		
- 
+		mapaAgenciaPessoaConta.forEach((k,v)->System.out.println("Key : Manoooooo consegui " + k + " Value : " + v));
+			
+		}
     	
-    }
+
     
 }
