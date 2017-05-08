@@ -102,7 +102,7 @@ public class Main {
     
     public static void inclusaoEmail(Pessoa pessoa){
 		try {
-			pessoa.setEmail(Email.of("alfredgsantos@gmail.com"));
+			pessoa.setEmail(Email.of("alfred,gsantos@gmail.com.br"));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -111,7 +111,7 @@ public class Main {
     }
     
     public static void inclusaoDeAgencia(Pessoa pessoa){
-    	
+    	Agencia agencia = new Agencia();
     	ContaCorrente contaCorrente = new ContaCorrente();
 		contaCorrente.setAgencia(123);
 		contaCorrente.setNumero(1);
@@ -132,6 +132,16 @@ public class Main {
 		contaPoupanca3.setAgencia(123);
 		contaPoupanca3.setNumero(5);
 		
+		contaPoupanca3.setLimite(500);
+		contaPoupanca3.depositarValor(500);
+
+		try {
+			pessoa.saqueConta(1, 1000);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		HashMap<Pessoa, List<Conta>> mapaAgenciaPessoaConta = new HashMap<>();
 		List<Conta> listContas = new ArrayList<Conta>();
 		listContas.add(contaCorrente);
@@ -141,10 +151,12 @@ public class Main {
 		listContas.add(contaPoupanca3);
 		mapaAgenciaPessoaConta.put(pessoa, listContas);
 		
-		mapaAgenciaPessoaConta.forEach((k,v)->System.out.println("Key : Manoooooo consegui " + k + " Value : " + v));
-			
+		//mapaAgenciaPessoaConta.forEach((k,v)->System.out.println("Key : Manoooooo consegui " + k + " Value : " + v));
+		
+		agencia.setMapaPessoaConta(mapaAgenciaPessoaConta);
+		
+		agencia.getMapaPessoaConta();
+		
+		System.out.println(agencia);
 		}
-    	
-
-    
 }

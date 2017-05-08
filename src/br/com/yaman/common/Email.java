@@ -14,31 +14,43 @@ public class Email {
 		this.email = email;
 	}
 
-	private Email (String email){
+	private Email(String email) {
 		this.email = email;
 	}
-	
-	public String toString(){
+
+	public String toString() {
 		return "Email: " + this.email;
 	}
-	
-	public static Email of (String email) throws Exception{
-		if (isEmail(email)){
+
+	public static Email of(String email) throws Exception {
+		if (isEmail(email)) {
 			return new Email(email);
 		}
 		throw new Exception("Email Inválido");
 	}
 
-    public static boolean isEmail(String email){
-        if (email != null && email.length() > 0) {
-            String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
-            Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
-            Matcher matcher = pattern.matcher(email);
-            if (matcher.matches()) {
-            	return(true);
-            }
-        }
-        return(false);
-    }
+	public static boolean isEmail(String email) {
+		String[] emailArroba = email.split("@");
+		String dominioBr = "com.br";
+		String dominioCom = "com";
+
+		if (email != null && email.length() > 0) {
+					if (emailArroba.length == 2) {
+						if (emailArroba[0].length() > 2) {
+							if (emailArroba[1].length() > 2) {
+								if (emailArroba[1].contains(dominioBr)) {
+									return (true);
+								} else {
+									if (emailArroba[1].contains(dominioCom)) {
+										return (true);
+									}
+								}
+							}
+						}
+					}
+				}
+		
+		return false;
+	}
 
 }

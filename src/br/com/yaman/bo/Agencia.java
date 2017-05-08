@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Agencia {
 	
+	Pessoa pessoa;
+	Conta conta;
 	HashMap<Pessoa, List<Conta>> mapaPessoaConta = new HashMap<>();
 
 	public HashMap<Pessoa, List<Conta>> getMapaPessoaConta() {
