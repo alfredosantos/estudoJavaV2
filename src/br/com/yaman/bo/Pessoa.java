@@ -15,7 +15,7 @@ public class Pessoa implements Serializable, Comparable<Pessoa>{
 	Cpf cpf;
 	Email email;
 
-	List<Conta> listContaPessoa = new ArrayList<Conta>();
+	//List<Conta> listContaPessoa = new ArrayList<Conta>();
 
 	public String getNome() {
 		return nome;
@@ -48,15 +48,7 @@ public class Pessoa implements Serializable, Comparable<Pessoa>{
 	public void setCpf(Cpf cpf) {
 			this.cpf = cpf;
 	}
-
-	public List<Conta> getListContaPessoa() {
-		return listContaPessoa;
-	}
-
-	public void setListContaPessoa(List<Conta> listContaPessoa) {
-		this.listContaPessoa = listContaPessoa;
-	}
-
+	
 	public Email getEmail() {
 		return email;
 	}
@@ -64,62 +56,69 @@ public class Pessoa implements Serializable, Comparable<Pessoa>{
 	public void setEmail(Email email) {
 		this.email = email;
 	}
+	
+//	public List<Conta> getListContaPessoa() {
+//		return listContaPessoa;
+//	}
+//
+//	public void setListContaPessoa(List<Conta> listContaPessoa) {
+//		this.listContaPessoa = listContaPessoa;
+//	}
 
-	public Boolean incluirConta(Conta conta){
-		for (Conta contaInclusao : listContaPessoa){
-			if (contaInclusao.getNumero() == conta.getNumero()){
-				return false;
-			}
-		}
-		listContaPessoa.add(conta);
-		return true;
-	}
+//	public Boolean incluirConta(Conta conta){
+//		for (Conta contaInclusao : listContaPessoa){
+//			if (contaInclusao.getNumero() == conta.getNumero()){
+//				return false;
+//			}
+//		}
+//		listContaPessoa.add(conta);
+//		return true;
+//	}
 	
-	public Conta getConta(int numeroConta){
-		Optional<Conta> contaOp = listContaPessoa.stream().filter(conta -> conta.getNumero() == numeroConta).findFirst();
-		if (contaOp.isPresent())
-			return contaOp.get();
-
-		return null;
-	}
+//	public Conta getConta(int numeroConta){
+//		Optional<Conta> contaOp = listContaPessoa.stream().filter(conta -> conta.getNumero() == numeroConta).findFirst();
+//		if (contaOp.isPresent())
+//			return contaOp.get();
+//
+//		return null;
+//	}
+//	
+//	public Boolean depositoConta(int numeroConta, double valor){
+//		for (Conta conta : listContaPessoa){
+//			if (conta.getNumero() == numeroConta) {
+//				conta.depositarValor(valor);
+//				return true;
+//			} 
+//		}
+//		return false;
+//	}
 	
-	public Boolean depositoConta(int numeroConta, double valor){
-		for (Conta conta : listContaPessoa){
-			if (conta.getNumero() == numeroConta) {
-				conta.depositarValor(valor);
-				return true;
-			} 
-		}
-		return false;
-	}
+//	public Boolean removerConta(int numeroConta){
+//		Conta contaTemp = new ContaCorrente();
+//		for (Conta conta : listContaPessoa){
+//			if (conta.getNumero() == numeroConta) {
+//				contaTemp = conta;
+//			} 
+//		}
+//		return listContaPessoa.remove(contaTemp);
+//	}
 	
-	public Boolean removerConta(int numeroConta){
-		Conta contaTemp = new ContaCorrente();
-		for (Conta conta : listContaPessoa){
-			if (conta.getNumero() == numeroConta) {
-				contaTemp = conta;
-			} 
-		}
-		return listContaPessoa.remove(contaTemp);
-	}
-	
-	public Boolean saqueConta(int numeroConta, double valor) throws Exception{
-
-		for (Conta conta : listContaPessoa){
-			if (conta.getNumero() == numeroConta){
-					conta.saque(valor);
-					return true;
-				}
-		}
-		return false;
-	}
+//	public Boolean saqueConta(int numeroConta, double valor) throws Exception{
+//		for (Conta conta : listContaPessoa){
+//			if (conta.getNumero() == numeroConta){
+//					conta.saque(valor);
+//					return true;
+//				}
+//		}
+//		return false;
+//	}
 	
 	public String toString() {
-		String contas = "";
-		for (Conta conta : listContaPessoa) {
-			contas += conta;
-		}
-		return "Nome: " + this.nome + "\n Idade: " + this.idade + "\n Endereço: " + this.endereco + "\n CPF: " + this.cpf + "\n Contas " + contas + "\n Email "  + this.email;
+//		String contas = "";
+//		for (Conta conta : listContaPessoa) {
+//			contas += conta;
+//		}
+		return "Nome: " + this.nome + "\n Idade: " + this.idade + "\n Endereço: " + this.endereco + "\n CPF: " + this.cpf  + "\n Email "  + this.email;
 
 	}
 

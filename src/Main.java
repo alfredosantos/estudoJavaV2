@@ -1,9 +1,6 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import br.com.yaman.bo.Agencia;
 import br.com.yaman.bo.Conta;
@@ -27,7 +24,7 @@ public class Main {
 		inclusaoEmail(pessoa);
 		inclusaoDeAgencia(pessoa);
 		
-		System.out.println(pessoa);
+		//System.out.println(pessoa);
 		
 	}
 	public static void inclusaoDeContas(Pessoa pessoa){
@@ -36,13 +33,13 @@ public class Main {
 		conta.setLimite(500);
 		conta.depositarValor(500);
 		conta.setNumero(1);
-		pessoa.incluirConta(conta);
+		/*pessoa.incluirConta(conta);
 		try {
 			pessoa.saqueConta(1, 1000);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		
 	}
 	
@@ -75,11 +72,11 @@ public class Main {
 		listContas.add(contaPoupanca2);
 		listContas.add(contaPoupanca3);
 		
-		pessoa.setListContaPessoa(listContas);
+/*		pessoa.setListContaPessoa(listContas);
 		
 		for (Conta conta : pessoa.getListContaPessoa()) {
 			conta.depositarValor(13.09);
-		}
+		}*/
 	}
 
     public static void inclusaoEndereco(Pessoa pessoa){
@@ -102,7 +99,7 @@ public class Main {
     
     public static void inclusaoEmail(Pessoa pessoa){
 		try {
-			pessoa.setEmail(Email.of("alfred,gsantos@gmail.com.br"));
+			pessoa.setEmail(Email.of("alfred.gsantos@gmail.com.br"));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -134,13 +131,6 @@ public class Main {
 		
 		contaPoupanca3.setLimite(500);
 		contaPoupanca3.depositarValor(500);
-
-		try {
-			pessoa.saqueConta(1, 1000);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		HashMap<Pessoa, List<Conta>> mapaAgenciaPessoaConta = new HashMap<>();
 		List<Conta> listContas = new ArrayList<Conta>();
@@ -151,9 +141,16 @@ public class Main {
 		listContas.add(contaPoupanca3);
 		mapaAgenciaPessoaConta.put(pessoa, listContas);
 		
-		//mapaAgenciaPessoaConta.forEach((k,v)->System.out.println("Key : Manoooooo consegui " + k + " Value : " + v));
+		mapaAgenciaPessoaConta.forEach((k,v)->System.out.println("Key : Manoooooo consegui " + k + " Value : " + v));
 		
 		agencia.setMapaPessoaConta(mapaAgenciaPessoaConta);
+		
+		try {
+			agencia.saqueConta(5, -100);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		agencia.getMapaPessoaConta();
 		
