@@ -89,7 +89,7 @@ public class Main {
     
     public static void inclusaoCpf(Pessoa pessoa){
     	try {
-			pessoa.setCpf(Cpf.of("25337792881"));
+			pessoa.setCpf(Cpf.of("13803623855"));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -99,12 +99,11 @@ public class Main {
     
     public static void inclusaoEmail(Pessoa pessoa){
 		try {
-			pessoa.setEmail(Email.of("alfred.gsantos@gmail.com.br"));
+			pessoa.setEmail(Email.of("teste@gmail.com.br"));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	
     }
     
     public static void inclusaoDeAgencia(Pessoa pessoa){
@@ -128,10 +127,12 @@ public class Main {
 		ContaPoupanca contaPoupanca3 = new ContaPoupanca();
 		contaPoupanca3.setAgencia(123);
 		contaPoupanca3.setNumero(5);
-		
 		contaPoupanca3.setLimite(500);
-		contaPoupanca3.depositarValor(500);
 		
+		ContaCorrente contaCorrente4 = new ContaCorrente();
+		contaCorrente4.setAgencia(123);
+		contaCorrente4.setNumero(6);
+
 		HashMap<Pessoa, List<Conta>> mapaAgenciaPessoaConta = new HashMap<>();
 		List<Conta> listContas = new ArrayList<Conta>();
 		listContas.add(contaCorrente);
@@ -141,12 +142,18 @@ public class Main {
 		listContas.add(contaPoupanca3);
 		mapaAgenciaPessoaConta.put(pessoa, listContas);
 		
-		mapaAgenciaPessoaConta.forEach((k,v)->System.out.println("Key : Manoooooo consegui " + k + " Value : " + v));
+		//mapaAgenciaPessoaConta.forEach((k,v)->System.out.println("Key : Manoooooo consegui " + k + " Value : " + v));
 		
 		agencia.setMapaPessoaConta(mapaAgenciaPessoaConta);
 		
+		agencia.depositoConta(pessoa, 5, 1000);
+		
+		agencia.incluirConta(pessoa, contaCorrente4);
+		
+		agencia.removerConta(pessoa, 3);
+		
 		try {
-			agencia.saqueConta(5, -100);
+			agencia.saqueConta(pessoa, 5, 100);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
